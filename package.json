@@ -1,12 +1,12 @@
 {
-  "name": "electron-react",
+  "name": "electron-babel-react",
   "version": "1.0.0",
   "description": "minimal react+electron+webpack starter",
-  "author": "",
-  "homepage": "https://github.com/pbarbiero/basic-electron-react-boilerplate",
+  "author": "Tristan Teufel",
+  "homepage": "teufel-it.de",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/firsttris/electron-babel-react.git"
   },
   "license": "MIT",
   "main": "main.js",
