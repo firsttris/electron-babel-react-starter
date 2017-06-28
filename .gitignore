@@ -6,6 +6,7 @@ build/
 builds/
 dist/
 coverage/
+.idea/
 
 # misc
 .DS_Store
