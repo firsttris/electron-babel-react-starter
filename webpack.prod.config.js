@@ -1,7 +1,6 @@
-const webpackConfig = require('./webpack.config');
+const renderer = require('./webpack.config');
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
-const renderer = webpackConfig[0];
 
 renderer.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({

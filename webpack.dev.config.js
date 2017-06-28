@@ -1,7 +1,7 @@
-const webpackConfig = require('./webpack.config');
+const renderer = require('./webpack.config');
 const path = require('path');
 const OUTPUT_DIR = path.resolve(__dirname, 'dist');
-const renderer = Object.assign(
+Object.assign(
     {
         devtool: 'inline-source-map',
         devServer: {
@@ -13,6 +13,6 @@ const renderer = Object.assign(
             }
         }
     },
-    webpackConfig[0]);
+    renderer);
 
 module.exports = renderer;
