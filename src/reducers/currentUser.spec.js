@@ -29,12 +29,12 @@ describe('currentUser reducer', () => {
     it('should save CurrentUser', () => {
         expect(
             currentUser({}, {type: 'currentUser/saveCurrentUser', data: {currentUser: mockUser}})
-        ).toEqual(mockUser)
+        ).toEqual({currentUser: mockUser})
     });
 
     it('should save Status', () => {
         expect(
             currentUser(mockUser, {type: 'message/status', data: {status: 'SUCCESS'}}).status
-        ).toEqual('SUCCESS')
+        ).toEqual({status: 'SUCCESS'})
     });
 })

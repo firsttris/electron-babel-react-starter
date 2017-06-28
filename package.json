@@ -15,18 +15,16 @@
     "test": "jest --coverage",
     "test-watch": "jest --coverage --watchAll",
     "electron-prod": "electron .",
-    "electron-dev": "electron . --devx",
+    "electron-dev": "electron . --dev",
     "dev-server": "webpack-dev-server --hot --config=./webpack.dev.config.js",
-    "build": "webpack --config webpack.build.config.js",
-    "electron-pack": "electron-packager ./ --out=./builds --overwrite",
-    "package": "yarn build && yarn electron-pack"
+    "webpack-build": "webpack --config webpack.prod.config.js",
+    "electron-package": "electron-packager ./ --out=./builds --overwrite",
+    "package": "yarn webpack-build && yarn electron-package"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.1",
