@@ -2,7 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const commonConfig = {
+module.exports = {
+    target: 'electron-renderer',
+    entry: {
+        gui: './src/index.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
@@ -34,18 +38,9 @@ const commonConfig = {
                 use: 'file-loader'
             }
         ]
-    }
-};
-
-module.exports = Object.assign(
-    {
-        target: 'electron-renderer',
-        entry: {
-            gui: './src/index.js',
-        },
-        plugins: [
-            new ExtractTextPlugin('bundle.css'),
-            new HtmlWebpackPlugin(),
-        ],
     },
-    commonConfig);
+    plugins: [
+        new ExtractTextPlugin('bundle.css'),
+        new HtmlWebpackPlugin(),
+    ]
+};
