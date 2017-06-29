@@ -9,7 +9,7 @@ import createHistory from 'history/createMemoryHistory'
 test('FadeCard changes the class when hovered', () => {
     const component = renderer.create(
         <Router history={createHistory()}>
-            <LinkItem focus={true} path="/" name="App"></LinkItem>
+            <LinkItem focus={true} path="/" name="App"/>
         </Router>
     );
     let tree = component.toJSON();
