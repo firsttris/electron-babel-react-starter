@@ -1,9 +1,15 @@
-const renderer = require('./base');
+const base = require('./base');
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-renderer.module.rules.push(
+let web = false;
+if (process.env.app === 'web') {
+    base.target = "web";
+    web = true;
+}
+
+base.module.rules.push(
     {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -12,7 +18,7 @@ renderer.module.rules.push(
         })
     }
 );
-renderer.plugins.push(
+base.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: function (module) {
@@ -30,6 +36,5 @@ renderer.plugins.push(
     new BabiliPlugin(),
     new ExtractTextPlugin("styles.css")
 );
-renderer.devtool = 'source-map';
-
-module.exports = renderer;
+base.devtool = 'source-map';
+module.exports = base;

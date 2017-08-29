@@ -1,3 +1,4 @@
 module.exports = function(env) {
-    return require(`./webpack/${env}.js`)
+    process.env.app = env.app;
+    return require(`./webpack/${env.config}.js`)
 };

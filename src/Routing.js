@@ -5,10 +5,7 @@ import {
     Switch
 } from 'react-router-dom'
 
-
-import NotFound from './../components/NotFound'
-import App from './App'
-import Nav from './../container/Navigation/Nav'
+import App from './container/App'
 
 class Routing extends Component {
 
@@ -17,10 +14,9 @@ class Routing extends Component {
         return (
             <Router>
                 <div>
-                    <Nav/>
                     <Switch>
                         <Route exact path="/" component={App}/>
-                        <Route component={NotFound}/>
+                        <Route component={App}/>
                     </Switch>
                 </div>
             </Router>

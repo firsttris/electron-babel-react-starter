@@ -1,7 +1,8 @@
-const renderer = require('./base');
+const base = require('./base');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack');
 
-renderer.module.rules.push(
+base.module.rules.push(
     {
         test: /\.css$/,
         use: [
@@ -20,9 +21,17 @@ renderer.module.rules.push(
         ]
     }
 );
-renderer.plugins.push(
+let web = false;
+if (process.env.app === 'web') {
+    base.target = "web";
+    web = true;
+}
+
+base.plugins.push(
     new FriendlyErrorsWebpackPlugin()
 );
-renderer.devtool = "eval";
 
-module.exports = renderer;
+
+
+base.devtool = "eval";
+module.exports = base;

@@ -2,8 +2,9 @@
 
 // Import parts of electron to use
 const {app, BrowserWindow} = require('electron');
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
+const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require('electron-devtools-installer');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,7 +28,7 @@ function createWindow() {
         console.log("Development Mode");
         indexPath = url.format({
             protocol: 'http:',
-            host: 'localhost:8080',
+            host: 'localhost:8081',
             pathname: 'index.html',
             slashes: true
         });
@@ -41,9 +42,12 @@ function createWindow() {
     mainWindow.loadURL(indexPath);
 
     if (dev) {
+        [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS].forEach(extension => {
+            installExtension(extension)
+                .then((name) => console.log(`Added Extension: ${name}`))
+                .catch((err) => console.log('An error occurred: ', err));
+        });
         mainWindow.webContents.openDevTools();
-        BrowserWindow.addDevToolsExtension('./devtools/React/2.4.0_0');
-        BrowserWindow.addDevToolsExtension('./devtools/Redux/2.15.1_0');
     }
 
     // Emitted when the window is closed.

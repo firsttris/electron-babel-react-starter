@@ -1,12 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux'
-import Routing from './container/Routing';
+import Routing from './Routing';
 import configureStore from './store/configureStore'
 import { saveState, loadState } from './store/localStorage'
 import throttle from 'lodash/throttle'
+import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
+import './index.css';
 
 const store = configureStore(loadState());
 
@@ -25,3 +26,4 @@ render(<Provider store={store}>
         <Routing/>
     </Provider>,
     document.getElementById('root'));
+registerServiceWorker();
