@@ -13,7 +13,7 @@
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watchAll",
-    "web:dev:server": "webpack-dev-server --port 8080 --hot --history-api-fallback --env.config=dev --env.app=web --colors --open",
+    "web:dev:server": "webpack-dev-server --port 8080 --hot --env.config=dev --env.app=web --colors --open",
     "electron:dev:server": "concurrently \"yarn webpack:dev:electron\" \"wait-on http://localhost:8081 && electron . --dev\"",
     "webpack:dev:electron": "webpack-dev-server --port 8081 --hot --env.config=dev --env.app=electron --colors",
     "webpack:build:electron": "webpack --env.config=prod --env.app=electron --colors",
